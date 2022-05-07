@@ -5,7 +5,7 @@
 package Principal;
 import java.util.Scanner;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+//import java.time.format.DateTimeFormatter;
 /**
  *
  * @author Mati
@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         
        Scanner Entrada= new Scanner(System.in);
-       LocalDateTime now = LocalDateTime.now();
+      // LocalDateTime now = LocalDateTime.now();
 
        // ARREGLO PARA TAREAS
        Tarea[] ListaDeTareas= new Tarea[10];
@@ -34,26 +34,26 @@ public class Main {
        Eventos eventos= new Eventos("Nombre", "Descripcion", "asd", "asd"); 
 
        //atributos de las clases
-       String Nombre;
-       String Descripcion;
-       String  Hora;
-       String Fecha;
-       String fechatarea;
-       String lugar;
-       String fechaeventos;
+       String Nombre="0";
+       String Descripcion="0";
+       String  Hora="0";
+       String Fecha="0";
+       String fechatarea="0";
+       String lugar="0";
+       String fechaeventos="0";
 
      
 
 
-       int ent;
+       int ent=0;
        //VARIABLE PARA MODIFICAR ALGO EN LA AGENDA
-       int ModAgenda;
+       int ModAgenda=0;
        //VARIABLE PARA MODIFICAR LA LISTA DE TAREAS
-       String ModTarea;
+       int ModTarea=0;
        //VARIABLE PARA MODIFICAR LA LISTA DE RECORDATORIOS
-       String ModRecordatorio;
+       int ModRecordatorio=0;
        //VARIABLE PARA MODIFICAR LA LISTA DE EVENTOS
-       String ModEventos;
+       int ModEventos=0;
        // CONTADOR DE TAREAS INGRESADAS
        int z=0;
        //CONTADOR DE RECORDATORIOS INGRESADOS
@@ -61,11 +61,18 @@ public class Main {
        // CONTADOR DE EVENTOS INGRESADOS
        int conteventos=0;
        //variable para elegir cargar una nueva tarea,recordatorio o evento
-       int tipo;
+       int tipo=0;
        // VARIABLE PARA VER LAS LISTAS DE TAREAS O RECORDATORIOS O EVENTOS
-       int verlistas;
-
-       String aux="0";
+       int verlistas=0;
+       // Variable para eliminar una tarea 
+        int elimtarea=0;
+        //variable para eliminar un recordatorio
+        int elimrecord=0;
+        //variable para eliminar un evento
+        int elimevento=0;
+        // variable para saber que tarea modificar
+        int numtarea = 0;
+       //String aux="0";
        
       do{
       
@@ -257,7 +264,7 @@ public class Main {
                             break;
 
                             case 6:
-                                for(int y=0 ; y<contrecord ; y++){
+                                for(int y=0 ; y < contrecord ; y++){
                                     System.out.println("Recordatorio Nº "+ y);
                                     System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
                                     System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
@@ -285,16 +292,71 @@ public class Main {
     
             case 3:
             
-                System.out.println("Ingrese 5 para modificar la lista de tareas");
-                System.out.println("Ingrese 6  para modificar la lista de recordatorios");
-                System.out.println("Ingrese 7 para modificar la lista de eventos");
+                System.out.println("Ingrese 5 para modificar o eliminar la lista de tareas");
+                System.out.println("Ingrese 6  para modificar o eliminar la lista de recordatorios");
+                System.out.println("Ingrese 7 para modificar o eliminar la lista de eventos");
                 ModAgenda=Entrada.nextInt();
                 Entrada.nextLine();
 
                 switch(ModAgenda){
                     case 5:
                     //FALTA CREAR LA BUSQUEDA BINARIA PARA PODER MODIFICAR ALGO EN LA AGENDA
-                        /*
+                        
+                        System.out.println("Ingrese 1 si quiere eliminar una tarea");
+                        System.out.println("Ingrese 2 para modificar una tarea");
+                        ModTarea=Entrada.nextInt();
+
+                            if(ModTarea==1){
+                                if(0<z){
+
+                                    for(int p=0 ; p<z ; p++){
+                                        System.out.println("Tarea Nº "+ p);
+                                        System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
+                                        System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
+                                        System.out.println("-----------------------");
+                                    }
+                                    
+                                    System.out.println("Ingrese el numero de tarea que desea eliminar");
+                                    elimtarea=Entrada.nextInt();
+
+                                    ListaDeTareas[elimtarea].Nombre="0";
+                                    ListaDeTareas[elimtarea].Descripcion="0";
+                                    ListaDeTareas[elimtarea].fechatarea="0";
+                                 }else{
+                                     System.out.println("ERROR. NO HAY TAREAS CARGADAS");
+                                 }
+                            }else{
+
+                                for(int p=0 ; p<z ; p++){
+                                    System.out.println("Tarea Nº "+ p);
+                                    System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
+                                    System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
+                                    System.out.println("-----------------------");
+                                }
+
+                                System.out.println("Ingrese el numero de la tarea que desea modificar");
+                                numtarea=Entrada.nextInt();
+
+                                while(numtarea < 0 || z < numtarea){
+                                    System.out.println("ERROR");
+                                    System.out.println("Ingrese el numero de la tarea que desea modificar");
+                                    numtarea=Entrada.nextInt();
+                                }
+
+                                System.out.println("Ingrese el nuevo nombre de la tarea Nº " + numtarea);
+                                ListaDeTareas[numtarea].Nombre=Entrada.nextLine();
+                                System.out.println("Ingrese la nueva descripcion de la tarea Nº " + numtarea);
+                                ListaDeTareas[numtarea].Descripcion=Entrada.nextLine();
+                                System.out.println("Ingrese la nueva fecha de la tarea Nº " + numtarea);
+                                ListaDeTareas[numtarea].fechatarea=Entrada.nextLine();
+
+                            }
+                    
+                    
+                    
+                    
+                    
+                    /*
                         System.out.println("Ingrese el nombre de la tarea que desea modificar");
                         ModTarea=Entrada.nextLine();
 
@@ -326,6 +388,39 @@ public class Main {
                     break;
 
                     case 6:
+                    System.out.println("Ingrese 1 si quiere eliminar un recordatorio");
+                    System.out.println("Ingrese 2 para modificar un recordatorio");
+                    ModRecordatorio = Entrada.nextInt();
+                    
+                    if(ModRecordatorio==1){
+                        if(0<contrecord){
+
+                            System.out.println("Recordatorio Nº "+ y);
+                            System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
+                            System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
+                            System.out.println("Fecha: " + listaDeRecordatorios[y].fecha);
+                            System.out.println("Hora :" + listaDeRecordatorios[y].hora);
+                            System.out.println("-----------------------");
+
+                            System.out.println("Ingrese el numero del recordatorio que desea eliminar");
+                            elimrecord=Entrada.nextInt();
+
+                            while(elimrecord < 0 || contrecord<elimrecord ){
+                                System.out.println("ERROR");
+                                System.out.println("Ingrese el numero del recordatorio que desea eliminar");
+                                elimrecord=Entrada.nextInt();
+                            }
+                            //falta copletar este if
+
+
+                        }else{
+                            System.out.println("ERROR. NO SE HAN CARGADO RECORDATORIOS AUN");
+                        }
+
+
+                    }else{
+
+                    }
 
                     break;
 
