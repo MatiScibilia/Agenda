@@ -4,7 +4,7 @@
  */
 package Principal;
 import java.util.Scanner;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 //import java.time.format.DateTimeFormatter;
 /**
  *
@@ -72,19 +72,24 @@ public class Main {
         int elimevento=0;
         // variable para saber que tarea modificar
         int numtarea = 0;
+        // variable para saber que recordatorio modificar
+        int numrecord=0;
+        //variable para saber que recordatorio modificar
+        int numevento=0;
        //String aux="0";
        
       do{
       
-      System.out.println("Ingrese 1 para cargar una nueva tarea,evento o recordatorio en la agenda");
-      System.out.println("Ingrese 2 para modificar algo en la agenda");
-      System.out.println("Ingrese 3 para mostrar la lista de tareas, eventos o recordatorios");
-      System.out.println("Ingrese 0 para salir");
+        System.out.println("Ingrese 1 para cargar una nueva tarea,evento o recordatorio en la agenda");
+        System.out.println("Ingrese 2 para mostrar la lista de tareas, eventos o recordatorios");
+        System.out.println("Ingrese 3 para modificar algo en la agenda");
+        System.out.println("Ingrese 0 para salir");
 
       ent=Entrada.nextInt();
       Entrada.nextLine();
+
       
-      while(ent < 0 || 4 < ent){
+      while(ent < 0 || 3 < ent){
         System.out.println("ERROR.");
                 
         System.out.println("Ingrese 1 para cargar una nueva tarea,evento o recordatorio en la agenda");
@@ -119,7 +124,9 @@ public class Main {
                         if(z<10){
                             System.out.println("Ingrese el nombre de la tarea N "+z);
                             Nombre = Entrada.nextLine();
-            
+                            Entrada.nextLine();
+
+
                             System.out.println("Ingrese la descripcion de la tarea N "+z);
                             Descripcion = Entrada.nextLine();
 
@@ -238,7 +245,7 @@ public class Main {
             
             case 2:
                 // if para saber si ya ha ingresado una tarea o un recordatorio o un evento
-                if(0<z && 0<conteventos && 0<contrecord){
+                if(0 < z || 0 < conteventos || 0 < contrecord){
                     
                     System.out.println("Ingrese 5 para ver las listas de tareas");
                     System.out.println("Ingrese 6 para ver las listas de recordatorios");
@@ -255,43 +262,59 @@ public class Main {
 
                         switch(verlistas){
                             case 5:
-                                for(int p=0 ; p<z ; p++){
-                                    System.out.println("Tarea Nº "+ p);
-                                    System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
-                                    System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
-                                    System.out.println("-----------------------");
+                                if(0<z){
+                                    for(int p=0 ; p<z ; p++){
+                                        System.out.println("Tarea Nº "+ p);
+                                        System.out.println("Nombre: " + ListaDeTareas[p].Nombre);
+                                        System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
+                                        System.out.println("Fecha: " + ListaDeTareas[p].fechatarea);
+                                        System.out.println("-----------------------");
+                                    }
+                                }else{
+                                    System.out.println("ERROR. NO SE HA ENCONTRADO TAREAS CARGADOS");
                                 }
                             break;
 
                             case 6:
-                                for(int y=0 ; y < contrecord ; y++){
-                                    System.out.println("Recordatorio Nº "+ y);
-                                    System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
-                                    System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
-                                    System.out.println("Fecha: " + listaDeRecordatorios[y].fecha);
-                                    System.out.println("Hora :" + listaDeRecordatorios[y].hora);
-                                    System.out.println("-----------------------");
+                                if(0<contrecord){
+
+                                    for(int y=0 ; y < contrecord ; y++){
+                                        System.out.println("Recordatorio Nº "+ y);
+                                        System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
+                                        System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
+                                        System.out.println("Fecha: " + listaDeRecordatorios[y].fecha);
+                                        System.out.println("Hora :" + listaDeRecordatorios[y].hora);
+                                        System.out.println("-----------------------");
+                                    }
+                                }else{
+                                    System.out.println("ERROR. NO SE HA ENCONTRADO RECORDATORIOS CARGADOS");
                                 }
                             break;
                             
                             case 7:
-                                for(int w=0 ; w<contrecord ; w++){
-                                    System.out.println("Recordatorio Nº "+ w);
-                                    System.out.println("Nombre: " + listaDEventos[w].Nombre);
-                                    System.out.println("Descripcion: " + listaDEventos[w].Descripcion);
-                                    System.out.println("Lugar: " + listaDEventos[w].lugar);
-                                    System.out.println("Fecha: " + listaDEventos[w].fechaeventos);
-                                    
-                                    System.out.println("-----------------------");
+                                if(0<contrecord){
+                                    for(int w=0 ; w<contrecord ; w++){
+                                        System.out.println("Recordatorio Nº "+ w);
+                                        System.out.println("Nombre: " + listaDEventos[w].Nombre);
+                                        System.out.println("Descripcion: " + listaDEventos[w].Descripcion);
+                                        System.out.println("Lugar: " + listaDEventos[w].lugar);
+                                        System.out.println("Fecha: " + listaDEventos[w].fechaeventos);
+                                        
+                                        System.out.println("-----------------------");
+                                    }
+                                }else{
+                                    System.out.println("ERROR. NO SE HA ENCONTRADO EVENTOS CARGADOS");
                                 }
                             break;
 
                         }
+                }else{
+                    System.out.println("ERROR NO SE HA CARGADO NADA EN LA AGENDA");
                 }
             break;
     
             case 3:
-            
+            if(0 < z || 0 < conteventos || 0 < contrecord){
                 System.out.println("Ingrese 5 para modificar o eliminar la lista de tareas");
                 System.out.println("Ingrese 6  para modificar o eliminar la lista de recordatorios");
                 System.out.println("Ingrese 7 para modificar o eliminar la lista de eventos");
@@ -313,15 +336,34 @@ public class Main {
                                         System.out.println("Tarea Nº "+ p);
                                         System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
                                         System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
+                                        System.out.println("Fecha: " + ListaDeTareas[p].fechatarea);
                                         System.out.println("-----------------------");
                                     }
                                     
                                     System.out.println("Ingrese el numero de tarea que desea eliminar");
                                     elimtarea=Entrada.nextInt();
+                                    
+                                    while(elimtarea < 0 || z < elimtarea){
+
+                                        System.out.println("ERROR.");
+
+                                        for(int p=0 ; p<z ; p++){
+                                            System.out.println("Tarea Nº "+ p);
+                                            System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
+                                            System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
+                                            System.out.println("Fecha: " + ListaDeTareas[p].fechatarea);
+                                            System.out.println("-----------------------");
+                                        }
+
+                                        System.out.println("Ingrese el numero de la tarea que desea modificar");
+                                        numtarea=Entrada.nextInt();
+                                    }
 
                                     ListaDeTareas[elimtarea].Nombre="0";
                                     ListaDeTareas[elimtarea].Descripcion="0";
                                     ListaDeTareas[elimtarea].fechatarea="0";
+
+                                    System.out.println("Se ha borrado correctamente la tarea N " + elimtarea);
                                  }else{
                                      System.out.println("ERROR. NO HAY TAREAS CARGADAS");
                                  }
@@ -350,6 +392,7 @@ public class Main {
                                 System.out.println("Ingrese la nueva fecha de la tarea Nº " + numtarea);
                                 ListaDeTareas[numtarea].fechatarea=Entrada.nextLine();
 
+                                System.out.println("Se cambiaron los datos de la tarea correctamente");
                             }
                     
                     
@@ -394,13 +437,14 @@ public class Main {
                     
                     if(ModRecordatorio==1){
                         if(0<contrecord){
-
-                            System.out.println("Recordatorio Nº "+ y);
-                            System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
-                            System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
-                            System.out.println("Fecha: " + listaDeRecordatorios[y].fecha);
-                            System.out.println("Hora :" + listaDeRecordatorios[y].hora);
-                            System.out.println("-----------------------");
+                            for(int y = 0 ; y < contrecord ; y++){
+                                System.out.println("Recordatorio Nº "+ y);
+                                System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
+                                System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
+                                System.out.println("Fecha: " + listaDeRecordatorios[y].fecha);
+                                System.out.println("Hora :" + listaDeRecordatorios[y].hora);
+                                System.out.println("-----------------------");
+                            }
 
                             System.out.println("Ingrese el numero del recordatorio que desea eliminar");
                             elimrecord=Entrada.nextInt();
@@ -410,7 +454,11 @@ public class Main {
                                 System.out.println("Ingrese el numero del recordatorio que desea eliminar");
                                 elimrecord=Entrada.nextInt();
                             }
-                            //falta copletar este if
+                            
+                            listaDeRecordatorios[elimrecord].Nombre="0";
+                            listaDeRecordatorios[elimrecord].Descripcion="0";
+                            listaDeRecordatorios[elimrecord].fecha="0";
+                            listaDeRecordatorios[elimrecord].hora="0";
 
 
                         }else{
@@ -420,15 +468,115 @@ public class Main {
 
                     }else{
 
+                        for(int g = 0 ; g < contrecord ; g++){
+                            System.out.println("Recordatorio Nº "+ g);
+                            System.out.println("Nombre: " + listaDeRecordatorios[g].Nombre);
+                            System.out.println("Descripcion: " + listaDeRecordatorios[g].Descripcion);
+                            System.out.println("Fecha: " + listaDeRecordatorios[g].fecha);
+                            System.out.println("Hora :" + listaDeRecordatorios[g].hora);
+                            System.out.println("-----------------------");
+                        }
+
+                        System.out.println("Ingrese el numero del recordatorio que desea modificar");
+                        numrecord=Entrada.nextInt();
+
+                        while(numrecord < 0 || contrecord < numrecord){
+                            System.out.println("ERROR");
+                            System.out.println("Ingrese el numero del recordatorio que desea modificar");
+                            numtarea=Entrada.nextInt();
+                        }
+
+                        System.out.println("Ingrese el nuevo nombre del recordatorio Nº " + numrecord);
+                        listaDeRecordatorios[numrecord].Nombre=Entrada.nextLine();
+                        System.out.println("Ingrese la nueva descripcion del recordatorio Nº " + numrecord);
+                        listaDeRecordatorios[numrecord].Descripcion=Entrada.nextLine();
+                        System.out.println("Ingrese la nueva fecha del recordatorio Nº " + numrecord);
+                        listaDeRecordatorios[numrecord].fecha=Entrada.nextLine();
+                        System.out.println("Ingrese la nueva hora del recordatorio Nº " + numrecord);
+                        listaDeRecordatorios[numrecord].hora=Entrada.nextLine();
+
+
+
                     }
 
                     break;
 
                     case 7:
 
+                    System.out.println("Ingrese 1 si quiere eliminar un evento");
+                    System.out.println("Ingrese 2 para modificar un evento");
+                    ModEventos = Entrada.nextInt();
+                    
+                    if(ModEventos==1){
+                        if(0<conteventos){
+                            for(int i = 0 ; i < conteventos ; i++){
+                                System.out.println("Evento Nº "+ i);
+                                System.out.println("Nombre: " + listaDEventos[i].Nombre);
+                                System.out.println("Descripcion: " + listaDEventos[i].Descripcion);
+                                System.out.println("Lugar: " + listaDEventos[i].lugar);
+                                System.out.println("Fecha: " + listaDEventos[i].fechaeventos);
+                                
+                                System.out.println("-----------------------");
+                            }
+
+                            System.out.println("Ingrese el numero del evento que desea eliminar");
+                            elimevento=Entrada.nextInt();
+
+                            while(elimevento < 0 || conteventos<elimevento ){
+                                System.out.println("ERROR");
+                                System.out.println("Ingrese el numero del evento que desea eliminar");
+                                elimevento=Entrada.nextInt();
+                            }
+                            
+                            listaDEventos[elimevento].Nombre="0";
+                            listaDEventos[elimevento].Descripcion="0";
+                            listaDEventos[elimevento].fechaeventos="0";
+                            listaDEventos[elimevento].lugar="0";
+
+
+                        }else{
+                            System.out.println("ERROR. NO SE HAN CARGADO EVENTOS AUN");
+                        }
+
+
+                    }else{
+
+                        for(int g = 0 ; g < contrecord ; g++){
+                            System.out.println("Evento Nº "+ g);
+                            System.out.println("Nombre: " + listaDEventos[g].Nombre);
+                            System.out.println("Descripcion: " + listaDEventos[g].Descripcion);
+                            System.out.println("Lugar: " + listaDEventos[g].lugar);
+                            System.out.println("Fecha: " + listaDEventos[g].fechaeventos);
+                            
+                            System.out.println("-----------------------");
+                        }
+
+                        System.out.println("Ingrese el numero del evento que desea modificar");
+                        numevento=Entrada.nextInt();
+
+                        while(numevento < 0 || conteventos< numevento){
+                            System.out.println("ERROR");
+                            System.out.println("Ingrese el numero del evento que desea modificar");
+                            numtarea=Entrada.nextInt();
+                        }
+
+                        System.out.println("Ingrese el nuevo nombre del evento Nº " + numevento);
+                        listaDEventos[numevento].Nombre=Entrada.nextLine();
+                        System.out.println("Ingrese la nueva descripcion del evento Nº " + numevento);
+                        listaDEventos[numevento].Descripcion=Entrada.nextLine();
+                        System.out.println("Ingrese la nueva fecha del evento Nº " + numevento);
+                        listaDEventos[elimevento].fechaeventos=Entrada.nextLine();
+                        System.out.println("Ingrese el nuevo lugar del evento Nº " + numevento);
+                        listaDEventos[elimevento].lugar=Entrada.nextLine();
+
+
+
+                    }
+                        
+
                     break;
                             
-           
+                     }
                     }
             break;
 
