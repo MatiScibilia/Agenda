@@ -541,12 +541,12 @@ public class Main {
 
                     }else{
 
-                        for(int g = 0 ; g < contrecord ; g++){
-                            System.out.println("Evento Nº "+ g);
-                            System.out.println("Nombre: " + listaDEventos[g].Nombre);
-                            System.out.println("Descripcion: " + listaDEventos[g].Descripcion);
-                            System.out.println("Lugar: " + listaDEventos[g].lugar);
-                            System.out.println("Fecha: " + listaDEventos[g].fechaeventos);
+                        for(int s = 0 ; s < conteventos; s++){
+                            System.out.println("Evento Nº "+ s);
+                            System.out.println("Nombre: " + listaDEventos[s].Nombre);
+                            System.out.println("Descripcion: " + listaDEventos[s].Descripcion);
+                            System.out.println("Lugar: " + listaDEventos[s].lugar);
+                            System.out.println("Fecha: " + listaDEventos[s].fechaeventos);
                             
                             System.out.println("-----------------------");
                         }
@@ -557,7 +557,7 @@ public class Main {
                         while(numevento < 0 || conteventos< numevento){
                             System.out.println("ERROR");
                             System.out.println("Ingrese el numero del evento que desea modificar");
-                            numtarea=Entrada.nextInt();
+                            numevento=Entrada.nextInt();
                         }
 
                         System.out.println("Ingrese el nuevo nombre del evento Nº " + numevento);
