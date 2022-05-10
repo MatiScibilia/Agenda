@@ -44,7 +44,7 @@ public class Main {
 
      
 
-
+       //VARIABLE PARA EL MENU PRINCIPAL
        int ent=0;
        //VARIABLE PARA MODIFICAR ALGO EN LA AGENDA
        int ModAgenda=0;
