@@ -77,6 +77,9 @@ public class Main {
         //variable para saber que recordatorio modificar
         int numevento=0;
        //String aux="0";
+      
+       //VARIABLE PARA LIMPIAR BUFFER Y SE INGRESEN CORRECTAMENTE LOS DATOS
+       String c="0";
        
       do{
       
@@ -117,14 +120,18 @@ public class Main {
                     tipo= Entrada.nextInt();
 
                 }
-
+                    
                     switch(tipo){
                         
                         case 5:
                         if(z<10){
+                            System.out.println("------------------------");
+                            //Variable para limpiar el buffer
+                            c=Entrada.nextLine();
+
                             System.out.println("Ingrese el nombre de la tarea N "+z);
                             Nombre = Entrada.nextLine();
-                            Entrada.nextLine();
+                            
 
 
                             System.out.println("Ingrese la descripcion de la tarea N "+z);
@@ -159,16 +166,22 @@ public class Main {
                         
                         case 6: 
                             if(contrecord<10){
+
+                                System.out.println("------------------------");
+                                //Variable para limpiar el buffer
+                                c=Entrada.nextLine();
+
                                 System.out.println("Hola Ingrese el nombre del Recordatorio N "+contrecord);
                                 Nombre = Entrada.nextLine();
                                 
-                                System.out.print("Dime la descripcion del recordatorio N "+contrecord);
+                                
+                                System.out.println("Dime la descripcion del recordatorio N "+contrecord);
                                 Descripcion = Entrada.nextLine();
                                 
-                                System.out.print("Dime la hora (hh:mm) del recordatorio N "+contrecord);
+                                System.out.println("Dime la hora (hh:mm) del recordatorio N "+contrecord);
                                 Hora= Entrada.nextLine();
                 
-                                System.out.print("Dime la fecha (dd/mm/aaaa) del recordatorio N "+contrecord);
+                                System.out.println("Dime la fecha (dd/mm/aaaa) del recordatorio N "+contrecord);
                                 Fecha = Entrada.nextLine();
                                 
                                 
@@ -199,9 +212,17 @@ public class Main {
 
                         case 7:
                         if(conteventos<10){
+
+                            System.out.println("------------------------");
+                            //Variable para limpiar el buffer
+                            c=Entrada.nextLine();
+
                             System.out.println("Ingrese el nombre del Evento N "+ conteventos);
                             Nombre = Entrada.nextLine();
+
+
                             
+
                             System.out.println("Ingrese la descripcion del Evento N " + conteventos);
                             Descripcion = Entrada.nextLine();
 
@@ -264,6 +285,7 @@ public class Main {
                             case 5:
                                 if(0<z){
                                     for(int p=0 ; p<z ; p++){
+                                        System.out.println("-----------------------");
                                         System.out.println("Tarea Nº "+ p);
                                         System.out.println("Nombre: " + ListaDeTareas[p].Nombre);
                                         System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
@@ -279,6 +301,7 @@ public class Main {
                                 if(0<contrecord){
 
                                     for(int y=0 ; y < contrecord ; y++){
+                                        System.out.println("-----------------------");
                                         System.out.println("Recordatorio Nº "+ y);
                                         System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
                                         System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
@@ -292,8 +315,9 @@ public class Main {
                             break;
                             
                             case 7:
-                                if(0<contrecord){
-                                    for(int w=0 ; w<contrecord ; w++){
+                                if(0<conteventos){
+                                    for(int w=0 ; w<conteventos ; w++){
+                                        System.out.println("-----------------------");
                                         System.out.println("Recordatorio Nº "+ w);
                                         System.out.println("Nombre: " + listaDEventos[w].Nombre);
                                         System.out.println("Descripcion: " + listaDEventos[w].Descripcion);
@@ -333,6 +357,7 @@ public class Main {
                                 if(0<z){
 
                                     for(int p=0 ; p<z ; p++){
+                                        System.out.println("-----------------------");
                                         System.out.println("Tarea Nº "+ p);
                                         System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
                                         System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
@@ -348,6 +373,7 @@ public class Main {
                                         System.out.println("ERROR.");
 
                                         for(int p=0 ; p<z ; p++){
+                                            System.out.println("-----------------------");
                                             System.out.println("Tarea Nº "+ p);
                                             System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
                                             System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
@@ -359,9 +385,13 @@ public class Main {
                                         numtarea=Entrada.nextInt();
                                     }
 
+                                    
+
                                     ListaDeTareas[elimtarea].Nombre="0";
                                     ListaDeTareas[elimtarea].Descripcion="0";
                                     ListaDeTareas[elimtarea].fechatarea="0";
+
+                                    z=z-1;
 
                                     System.out.println("Se ha borrado correctamente la tarea N " + elimtarea);
                                  }else{
@@ -370,11 +400,14 @@ public class Main {
                             }else{
 
                                 for(int p=0 ; p<z ; p++){
+                                    System.out.println("-----------------------");
                                     System.out.println("Tarea Nº "+ p);
                                     System.out.println("Nombre: "+ListaDeTareas[p].Nombre);
                                     System.out.println("Descripcion: "+ListaDeTareas[p].Descripcion);
                                     System.out.println("-----------------------");
                                 }
+
+                                
 
                                 System.out.println("Ingrese el numero de la tarea que desea modificar");
                                 numtarea=Entrada.nextInt();
@@ -385,6 +418,10 @@ public class Main {
                                     numtarea=Entrada.nextInt();
                                 }
 
+                                System.out.println("------------------------");
+                                //Variable para limpiar el buffer
+                                c=Entrada.nextLine();
+
                                 System.out.println("Ingrese el nuevo nombre de la tarea Nº " + numtarea);
                                 ListaDeTareas[numtarea].Nombre=Entrada.nextLine();
                                 System.out.println("Ingrese la nueva descripcion de la tarea Nº " + numtarea);
@@ -393,6 +430,7 @@ public class Main {
                                 ListaDeTareas[numtarea].fechatarea=Entrada.nextLine();
 
                                 System.out.println("Se cambiaron los datos de la tarea correctamente");
+                                
                             }
                     
                     
@@ -438,6 +476,7 @@ public class Main {
                     if(ModRecordatorio==1){
                         if(0<contrecord){
                             for(int y = 0 ; y < contrecord ; y++){
+                                System.out.println("-----------------------");
                                 System.out.println("Recordatorio Nº "+ y);
                                 System.out.println("Nombre: " + listaDeRecordatorios[y].Nombre);
                                 System.out.println("Descripcion: " + listaDeRecordatorios[y].Descripcion);
@@ -460,6 +499,9 @@ public class Main {
                             listaDeRecordatorios[elimrecord].fecha="0";
                             listaDeRecordatorios[elimrecord].hora="0";
 
+                            contrecord=contrecord-1;
+
+                            System.out.println("Se ha borrado correctamente el recordatorio N " + elimrecord);
 
                         }else{
                             System.out.println("ERROR. NO SE HAN CARGADO RECORDATORIOS AUN");
@@ -469,6 +511,7 @@ public class Main {
                     }else{
 
                         for(int g = 0 ; g < contrecord ; g++){
+                            System.out.println("-----------------------");
                             System.out.println("Recordatorio Nº "+ g);
                             System.out.println("Nombre: " + listaDeRecordatorios[g].Nombre);
                             System.out.println("Descripcion: " + listaDeRecordatorios[g].Descripcion);
@@ -486,6 +529,11 @@ public class Main {
                             numtarea=Entrada.nextInt();
                         }
 
+                        System.out.println("------------------------");
+                        //Variable para limpiar el buffer
+                        c=Entrada.nextLine();
+
+
                         System.out.println("Ingrese el nuevo nombre del recordatorio Nº " + numrecord);
                         listaDeRecordatorios[numrecord].Nombre=Entrada.nextLine();
                         System.out.println("Ingrese la nueva descripcion del recordatorio Nº " + numrecord);
@@ -495,8 +543,8 @@ public class Main {
                         System.out.println("Ingrese la nueva hora del recordatorio Nº " + numrecord);
                         listaDeRecordatorios[numrecord].hora=Entrada.nextLine();
 
-
-
+                        System.out.println("Se cambiaron los datos de la tarea correctamente");
+                        System.out.println("------------------------");
                     }
 
                     break;
@@ -510,6 +558,7 @@ public class Main {
                     if(ModEventos==1){
                         if(0<conteventos){
                             for(int i = 0 ; i < conteventos ; i++){
+                                System.out.println("-----------------------");
                                 System.out.println("Evento Nº "+ i);
                                 System.out.println("Nombre: " + listaDEventos[i].Nombre);
                                 System.out.println("Descripcion: " + listaDEventos[i].Descripcion);
@@ -533,15 +582,21 @@ public class Main {
                             listaDEventos[elimevento].fechaeventos="0";
                             listaDEventos[elimevento].lugar="0";
 
+                            conteventos=conteventos-1;
+
+                            System.out.println("Se ha borrado correctamente el evento N " + elimevento);
+                            System.out.println("-----------------------");
 
                         }else{
                             System.out.println("ERROR. NO SE HAN CARGADO EVENTOS AUN");
+                            System.out.println("-----------------------");
                         }
 
 
                     }else{
 
                         for(int s = 0 ; s < conteventos; s++){
+                            System.out.println("-----------------------");
                             System.out.println("Evento Nº "+ s);
                             System.out.println("Nombre: " + listaDEventos[s].Nombre);
                             System.out.println("Descripcion: " + listaDEventos[s].Descripcion);
@@ -560,6 +615,10 @@ public class Main {
                             numevento=Entrada.nextInt();
                         }
 
+                        System.out.println("------------------------");
+                        //Variable para limpiar el buffer
+                        c=Entrada.nextLine();
+
                         System.out.println("Ingrese el nuevo nombre del evento Nº " + numevento);
                         listaDEventos[numevento].Nombre=Entrada.nextLine();
                         System.out.println("Ingrese la nueva descripcion del evento Nº " + numevento);
@@ -569,14 +628,16 @@ public class Main {
                         System.out.println("Ingrese el nuevo lugar del evento Nº " + numevento);
                         listaDEventos[elimevento].lugar=Entrada.nextLine();
 
-
-
+                        System.out.println("Se cambiaron los datos de la tarea correctamente");
+                        System.out.println("------------------------");
                     }
                         
-
                     break;
                             
-                     }
+                    }
+                    }else{
+                        System.out.println("ERROR. NO SE HAN CARGADO DATOS EN LA AGENDA");
+                        System.out.println("------------------------");
                     }
             break;
 
