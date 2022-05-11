@@ -78,7 +78,7 @@ public class Main {
         int numevento=0;
        //String aux="0";
       
-       //VARIABLE PARA LIMPIAR BUFFER Y SE INGRESEN CORRECTAMENTE LOS DATOS
+       //VARIABLE PARA LIMPIAR BUFFER Y SE INGRESEN CORRECTAMENTE LOS DATOS 
        String c="0";
        
       do{
@@ -88,20 +88,27 @@ public class Main {
         System.out.println("Ingrese 3 para modificar algo en la agenda");
         System.out.println("Ingrese 0 para salir");
 
-      ent=Entrada.nextInt();
-      Entrada.nextLine();
-
-      
-      while(ent < 0 || 3 < ent){
-        System.out.println("ERROR.");
-                
-        System.out.println("Ingrese 1 para cargar una nueva tarea,evento o recordatorio en la agenda");
-        System.out.println("Ingrese 2 para mostrar la lista de tareas, eventos o recordatorios");
-        System.out.println("Ingrese 3 para modificar algo en la agenda");
-        System.out.println("Ingrese 0 para salir");
         ent=Entrada.nextInt();
+        Entrada.nextLine();
+
+        //para borrar pantalla
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+      
+        while(ent < 0 || 3 < ent){
+            //para borrar pantalla
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+
+            System.out.println("ERROR.");
+                
+            System.out.println("Ingrese 1 para cargar una nueva tarea,evento o recordatorio en la agenda");
+            System.out.println("Ingrese 2 para mostrar la lista de tareas, eventos o recordatorios");
+            System.out.println("Ingrese 3 para modificar algo en la agenda");
+            System.out.println("Ingrese 0 para salir");
+            ent=Entrada.nextInt();
           
-      }
+        }
       
       switch(ent){
 
@@ -113,13 +120,25 @@ public class Main {
                 tipo= Entrada.nextInt();
 
                 while(tipo < 5 || 7 < tipo){
+                    //para borrar pantalla
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+
                     System.out.println("ERROR");
                     System.out.println("Ingrese 5 para crear una nueva tarea");
                     System.out.println("Ingrese 6 para crear un nuevo recordatorio");
                     System.out.println("Ingrese 7 para crear un nuevo evento");
                     tipo= Entrada.nextInt();
 
+                    //para borrar pantalla
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+
                 }
+
+                //para borrar pantalla
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
                     
                     switch(tipo){
                         
@@ -132,8 +151,6 @@ public class Main {
                             System.out.println("Ingrese el nombre de la tarea N "+z);
                             Nombre = Entrada.nextLine();
                             
-
-
                             System.out.println("Ingrese la descripcion de la tarea N "+z);
                             Descripcion = Entrada.nextLine();
 
@@ -155,10 +172,18 @@ public class Main {
                                 }
                             }
                             */
+                            //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
 
                             z=z+1;
                         }
                         else{
+
+                            //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
                             System.out.println("ERROR. YA NO SE PUEDEN CARGAR MAS TAREAS");
                             System.out.println("USTED A CARGADO EL MAXIMO DE TAREAS (10)");
                         }
@@ -191,6 +216,10 @@ public class Main {
                                 // CONTADOR DE LOS RECORDATORIOS INGRESADOS
                                 contrecord=contrecord+1;
 
+                                 //para borrar pantalla
+                                System.out.print("\033[H\033[2J");
+                                System.out.flush();
+
                                 //Ordenamiento burbuja
                                 /*
                                 for(int n = 0 ; n < contrecord ; n++ ){
@@ -205,6 +234,11 @@ public class Main {
                                 */
                         }
                         else{
+
+                             //para borrar pantalla
+                             System.out.print("\033[H\033[2J");
+                             System.out.flush();
+
                             System.out.println("ERROR. YA NO SE PUEDEN CARGAR MAS RECORDATORIOS");
                             System.out.println("USTED A CARGADO EL MAXIMO DE RECORDATORIOS (10)");
                         }
@@ -238,6 +272,10 @@ public class Main {
 
                             conteventos=conteventos+1;
 
+                            //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
                             //Ordenamiento burbuja
                             /*
                             for(int r = 0 ; r < conteventos ; r++ ){
@@ -252,6 +290,10 @@ public class Main {
                             */
                         }   
                         else{
+                            //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
                             System.out.println("ERROR. YA NO SE PUEDEN CARGAR MAS EVENTOS");
                             System.out.println("USTED A CARGADO EL MAXIMO DE EVENTOS (10)");
                         }
@@ -274,12 +316,24 @@ public class Main {
                     verlistas=Entrada.nextInt();
 
                     while(verlistas < 5 || 7 < verlistas){
+                         //para borrar pantalla
+                         System.out.print("\033[H\033[2J");
+                         System.out.flush();
+
                         System.out.println("ERROR");
                         System.out.println("Ingrese 5 para ver las listas de tareas");
                         System.out.println("Ingrese 6 para ver las listas de recordatorios");
                         System.out.println("Ingrese 7 para ver las listas de eventos");
                         verlistas=Entrada.nextInt();
+
+                         //para borrar pantalla
+                         System.out.print("\033[H\033[2J");
+                         System.out.flush();
                     }
+
+                    //para borrar pantalla
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
 
                         switch(verlistas){
                             case 5:
@@ -293,6 +347,11 @@ public class Main {
                                         System.out.println("-----------------------");
                                     }
                                 }else{
+
+                                    //para borrar pantalla
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.flush();
+
                                     System.out.println("ERROR. NO SE HA ENCONTRADO TAREAS CARGADOS");
                                 }
                             break;
@@ -310,6 +369,10 @@ public class Main {
                                         System.out.println("-----------------------");
                                     }
                                 }else{
+                                    //para borrar pantalla
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.flush();
+
                                     System.out.println("ERROR. NO SE HA ENCONTRADO RECORDATORIOS CARGADOS");
                                 }
                             break;
@@ -327,13 +390,23 @@ public class Main {
                                         System.out.println("-----------------------");
                                     }
                                 }else{
+
+                                    //para borrar pantalla
+                                    System.out.print("\033[H\033[2J");
+                                    System.out.flush();
+
                                     System.out.println("ERROR. NO SE HA ENCONTRADO EVENTOS CARGADOS");
                                 }
                             break;
 
                         }
                 }else{
+                     //para borrar pantalla
+                     System.out.print("\033[H\033[2J");
+                     System.out.flush();
+
                     System.out.println("ERROR NO SE HA CARGADO NADA EN LA AGENDA");
+                    System.out.println("------------------------");
                 }
             break;
     
@@ -345,6 +418,26 @@ public class Main {
                 ModAgenda=Entrada.nextInt();
                 Entrada.nextLine();
 
+                while(ModAgenda < 5 || 7 < ModAgenda){
+                    //para borrar pantalla
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+
+                    System.out.println("Ingrese 5 para modificar o eliminar la lista de tareas");
+                    System.out.println("Ingrese 6  para modificar o eliminar la lista de recordatorios");
+                    System.out.println("Ingrese 7 para modificar o eliminar la lista de eventos");
+                    ModAgenda=Entrada.nextInt();
+                    Entrada.nextLine();
+
+                    //para borrar pantalla
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+               }
+
+                //para borrar pantalla
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+
                 switch(ModAgenda){
                     case 5:
                     //FALTA CREAR LA BUSQUEDA BINARIA PARA PODER MODIFICAR ALGO EN LA AGENDA
@@ -352,6 +445,23 @@ public class Main {
                         System.out.println("Ingrese 1 si quiere eliminar una tarea");
                         System.out.println("Ingrese 2 para modificar una tarea");
                         ModTarea=Entrada.nextInt();
+
+                        while(ModTarea < 1 || 2 < ModTarea){
+
+                            //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
+                            System.out.println("ERROR.");
+                            System.out.println("Ingrese 1 si quiere eliminar una tarea");
+                            System.out.println("Ingrese 2 para modificar una tarea");
+                            ModTarea=Entrada.nextInt();
+
+                            //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
+                        }
 
                             if(ModTarea==1){
                                 if(0<z){
@@ -472,6 +582,22 @@ public class Main {
                     System.out.println("Ingrese 1 si quiere eliminar un recordatorio");
                     System.out.println("Ingrese 2 para modificar un recordatorio");
                     ModRecordatorio = Entrada.nextInt();
+
+                    while(ModRecordatorio < 1 || 2 < ModRecordatorio){
+
+                        //para borrar pantalla
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+
+                        System.out.println("Ingrese 1 si quiere eliminar un recordatorio");
+                        System.out.println("Ingrese 2 para modificar un recordatorio");
+                        ModRecordatorio = Entrada.nextInt();
+
+                        //para borrar pantalla
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+
+                    }
                     
                     if(ModRecordatorio==1){
                         if(0<contrecord){
@@ -554,6 +680,23 @@ public class Main {
                     System.out.println("Ingrese 1 si quiere eliminar un evento");
                     System.out.println("Ingrese 2 para modificar un evento");
                     ModEventos = Entrada.nextInt();
+
+                    while(ModEventos < 1 || 2 < ModEventos){
+
+                        //para borrar pantalla
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+
+                        System.out.println("Ingrese 1 si quiere eliminar un evento");
+                        System.out.println("Ingrese 2 para modificar un evento");
+                        ModEventos = Entrada.nextInt();
+
+                        //para borrar pantalla
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+
+                    }
+                    
                     
                     if(ModEventos==1){
                         if(0<conteventos){
@@ -584,10 +727,19 @@ public class Main {
 
                             conteventos=conteventos-1;
 
+                             //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
                             System.out.println("Se ha borrado correctamente el evento N " + elimevento);
                             System.out.println("-----------------------");
 
                         }else{
+
+                             //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
                             System.out.println("ERROR. NO SE HAN CARGADO EVENTOS AUN");
                             System.out.println("-----------------------");
                         }
@@ -610,9 +762,17 @@ public class Main {
                         numevento=Entrada.nextInt();
 
                         while(numevento < 0 || conteventos< numevento){
+                             //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+
                             System.out.println("ERROR");
                             System.out.println("Ingrese el numero del evento que desea modificar");
                             numevento=Entrada.nextInt();
+
+                             //para borrar pantalla
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
                         }
 
                         System.out.println("------------------------");
@@ -628,6 +788,10 @@ public class Main {
                         System.out.println("Ingrese el nuevo lugar del evento Nº " + numevento);
                         listaDEventos[elimevento].lugar=Entrada.nextLine();
 
+                        //para borrar pantalla
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+
                         System.out.println("Se cambiaron los datos de la tarea correctamente");
                         System.out.println("------------------------");
                     }
@@ -636,6 +800,10 @@ public class Main {
                             
                     }
                     }else{
+                        //para borrar pantalla
+                        System.out.print("\033[H\033[2J");
+                        System.out.flush();
+
                         System.out.println("ERROR. NO SE HAN CARGADO DATOS EN LA AGENDA");
                         System.out.println("------------------------");
                     }
