@@ -381,7 +381,7 @@ public class Main {
                                 if(0<conteventos){
                                     for(int w=0 ; w<conteventos ; w++){
                                         System.out.println("-----------------------");
-                                        System.out.println("Recordatorio Nº "+ w);
+                                        System.out.println("Evento Nº "+ w);
                                         System.out.println("Nombre: " + listaDEventos[w].Nombre);
                                         System.out.println("Descripcion: " + listaDEventos[w].Descripcion);
                                         System.out.println("Lugar: " + listaDEventos[w].lugar);
@@ -500,6 +500,25 @@ public class Main {
                                     ListaDeTareas[elimtarea].Nombre="0";
                                     ListaDeTareas[elimtarea].Descripcion="0";
                                     ListaDeTareas[elimtarea].fechatarea="0";
+
+                                    for(int d=0 ; d < z ; d++){
+                                        if(d == z-1){
+                                            d=100;
+                                            
+                                        }else{
+                                            if(ListaDeTareas[d].Nombre=="0"){
+                                                ListaDeTareas[d].Nombre=ListaDeTareas[d+1].Nombre;
+                                                ListaDeTareas[d].Descripcion=ListaDeTareas[d+1].Descripcion;
+                                                ListaDeTareas[d].fechatarea=ListaDeTareas[d+1].fechatarea;
+
+                                                ListaDeTareas[d+1].Nombre="0";
+                                                ListaDeTareas[d+1].Descripcion="0";
+                                                ListaDeTareas[d+1].fechatarea="0";
+                                            }
+                                        }
+
+                                    }
+  
 
                                     z=z-1;
 
@@ -625,6 +644,28 @@ public class Main {
                             listaDeRecordatorios[elimrecord].fecha="0";
                             listaDeRecordatorios[elimrecord].hora="0";
 
+                            for(int n=0 ; n < contrecord ; n++){
+                                if(n == contrecord-1){
+                                    n=100;
+                                }else{
+
+                                    if(ListaDeTareas[n].Nombre=="0"){
+                                        
+                                        listaDeRecordatorios[n].Nombre = listaDeRecordatorios[n+1].Nombre;
+                                        listaDeRecordatorios[n].Descripcion = listaDeRecordatorios[n+1].Descripcion;
+                                        listaDeRecordatorios[n].fecha = listaDeRecordatorios[n+1].fecha;
+                                        listaDeRecordatorios[n].hora = listaDeRecordatorios[n+1].hora;
+
+                                        listaDeRecordatorios[n+1].Nombre="0";
+                                        listaDeRecordatorios[n+1].Descripcion="0";
+                                        listaDeRecordatorios[n+1].fecha="0";
+                                        listaDeRecordatorios[n+1].hora="0";
+
+                                    }
+                                }
+
+                            }
+
                             contrecord=contrecord-1;
 
                             System.out.println("Se ha borrado correctamente el recordatorio N " + elimrecord);
@@ -724,6 +765,29 @@ public class Main {
                             listaDEventos[elimevento].Descripcion="0";
                             listaDEventos[elimevento].fechaeventos="0";
                             listaDEventos[elimevento].lugar="0";
+
+                            for(int j=0 ; j < conteventos ; j++){
+                                if(j == conteventos-1){
+                                    j=100;
+                                }else{
+
+                                    if(listaDEventos[j].Nombre=="0"){
+                                    
+                                        listaDEventos[j].Nombre=listaDEventos[j+1].Nombre;
+                                        listaDEventos[j].Descripcion=listaDEventos[j+1].Descripcion;
+                                        listaDEventos[j].fechaeventos=listaDEventos[j+1].fechaeventos;
+                                        listaDEventos[j].lugar=listaDEventos[j+1].lugar;
+    
+                                        listaDEventos[j+1].Nombre="0";
+                                        listaDEventos[j+1].Descripcion="0";
+                                        listaDEventos[j+1].fechaeventos="0";
+                                        listaDEventos[j+1].lugar="0";
+    
+    
+                                        
+                                    }
+                                }
+                            }
 
                             conteventos=conteventos-1;
 
